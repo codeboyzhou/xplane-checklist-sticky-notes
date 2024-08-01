@@ -413,4 +413,4 @@ function pre_boarding_checklist()
     do_every_draw('check_pre_boarding_items()')
 end
 
-add_macro('Airbus A330 Pre-boarding Checklist', 'pre_boarding_checklist()', '', 'deactivate')
+add_macro('Show Airbus A330 Pre-boarding Checklist', 'pre_boarding_checklist()', '', 'deactivate')
