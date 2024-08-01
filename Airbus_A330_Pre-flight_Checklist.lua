@@ -1,6 +1,5 @@
 local data_ref_beacon_on = XPLMFindDataRef('sim/cockpit2/switches/beacon_on')
 local data_ref_apu_bleed_on = XPLMFindDataRef('laminar/A333/buttons/apu_bleed_pos')
-local data_ref_throttle_ratio = XPLMFindDataRef('sim/cockpit2/engine/actuators/throttle_ratio')
 local data_ref_fuel_left1_pump_on = XPLMFindDataRef("laminar/A333/fuel/buttons/left1_pump_pos")
 local data_ref_fuel_left2_pump_on = XPLMFindDataRef("laminar/A333/fuel/buttons/left2_pump_pos")
 local data_ref_fuel_left_pump_standby = XPLMFindDataRef("laminar/A333/fuel/buttons/left_stby_pump_pos")
@@ -33,34 +32,25 @@ local text_start_x = 20
 local text_start_y = 20
 local text_delta_y = 20
 
-function check_beacon_on()
+local function check_beacon_on()
     local beacon_on = XPLMGetDatai(data_ref_beacon_on)
     if beacon_on == 1 then
-        draw_string(text_start_x, text_start_y + text_delta_y * 0, 'SET BEACON TO ON', 'green')
+        draw_string(text_start_x, text_start_y + text_delta_y * 11, 'SET BEACON TO ON', 'green')
     else
-        draw_string(text_start_x, text_start_y + text_delta_y * 0, 'SET BEACON TO ON', 'red')
+        draw_string(text_start_x, text_start_y + text_delta_y * 11, 'SET BEACON TO ON', 'red')
     end
 end
 
-function check_apu_bleed_on()
+local function check_apu_bleed_on()
     local apu_bleed_on = XPLMGetDatai(data_ref_apu_bleed_on)
     if apu_bleed_on == 1 then
-        draw_string(text_start_x, text_start_y + text_delta_y * 11, 'SET APU BLEED TO ON', 'green')
+        draw_string(text_start_x, text_start_y + text_delta_y * 10, 'SET APU BLEED TO ON', 'green')
     else
-        draw_string(text_start_x, text_start_y + text_delta_y * 11, 'SET APU BLEED TO ON', 'red')
+        draw_string(text_start_x, text_start_y + text_delta_y * 10, 'SET APU BLEED TO ON', 'red')
     end
 end
 
-function check_throttles_idle()
-    local throttle_ratio = XPLMGetDatavf(data_ref_throttle_ratio, 0, 2)
-    if throttle_ratio[0] == 0 and throttle_ratio[1] == 0 then
-        draw_string(text_start_x, text_start_y + text_delta_y * 10, 'SET THROTTLE 1 and THROTTLE 2 TO IDLE', 'green')
-    else
-        draw_string(text_start_x, text_start_y + text_delta_y * 10, 'SET THROTTLE 1 and THROTTLE 2 TO IDLE', 'red')
-    end
-end
-
-function check_fuel_pumps_on()
+local function check_fuel_pumps_on()
     local fuel_left1_pump_on = XPLMGetDatai(data_ref_fuel_left1_pump_on)
     local fuel_left2_pump_on = XPLMGetDatai(data_ref_fuel_left2_pump_on)
     local fuel_left_pump_standby = XPLMGetDatai(data_ref_fuel_left_pump_standby)
@@ -77,7 +67,7 @@ function check_fuel_pumps_on()
     end
 end
 
-function check_engine_mode_IGN_START()
+local function check_engine_mode_IGN_START()
     local engine_mode = XPLMGetDatai(data_ref_engine_mode)
     if engine_mode == 1 then
         draw_string(text_start_x, text_start_y + text_delta_y * 8, 'SET ENGINE MODE TO IGN/START', 'green')
@@ -86,7 +76,7 @@ function check_engine_mode_IGN_START()
     end
 end
 
-function check_engines_starting()
+local function check_engines_starting()
     local engines_N3_percent = XPLMGetDatavf(data_ref_engines_N3_percent, 0, 2)
     if engines_N3_percent[0] > 58 and engines_N3_percent[1] > 58 then
         draw_string(text_start_x, text_start_y + text_delta_y * 7, 'SET ENGINE 1 and ENGINE 2 MASTER STARTING', 'green')
@@ -95,7 +85,7 @@ function check_engines_starting()
     end
 end
 
-function check_generators_on_and_bus_tie_auto()
+local function check_generators_on_and_bus_tie_auto()
     local generator1_on = XPLMGetDatai(data_ref_generator1_on)
     local generator2_on = XPLMGetDatai(data_ref_generator2_on)
     local bus_tie_auto = XPLMGetDatai(data_ref_bus_tie_auto)
@@ -107,7 +97,7 @@ function check_generators_on_and_bus_tie_auto()
     end
 end
 
-function check_apu_bleed_off()
+local function check_apu_bleed_off()
     local apu_bleed_on = XPLMGetDatai(data_ref_apu_bleed_on)
     if apu_bleed_on == 0 then
         draw_string(text_start_x, text_start_y + text_delta_y * 5, 'SET APU BLEED TO OFF', 'green')
@@ -116,7 +106,7 @@ function check_apu_bleed_off()
     end
 end
 
-function check_engines_bleed_on()
+local function check_engines_bleed_on()
     local engine_bleed1_on = XPLMGetDatai(data_ref_engine_bleed1_on)
     local engine_bleed2_on = XPLMGetDatai(data_ref_engine_bleed2_on)
     local engine_pack1_on = XPLMGetDatai(data_ref_engine_pack1_on)
@@ -131,7 +121,7 @@ function check_engines_bleed_on()
     end
 end
 
-function check_cargo_valves_isolated_and_hot_air_on()
+local function check_cargo_valves_isolated_and_hot_air_on()
     local fwd_isol_valve_on = XPLMGetDatai(data_ref_fwd_isol_valve_on)
     local bulk_isol_valve_on = XPLMGetDatai(data_ref_bulk_isol_valve_on)
     local hot_air_on = XPLMGetDatai(data_ref_hot_air_on)
@@ -143,7 +133,7 @@ function check_cargo_valves_isolated_and_hot_air_on()
     end
 end
 
-function check_apu_generator_and_master_off()
+local function check_apu_generator_and_master_off()
     local apu_master_on = XPLMGetDatai(data_ref_apu_master_on)
     local apu_start_on = XPLMGetDatai(data_ref_apu_start_on)
     local apu_generator_on = XPLMGetDatai(data_ref_apu_generator_on)
@@ -155,7 +145,7 @@ function check_apu_generator_and_master_off()
     end
 end
 
-function check_engine_mode_normal()
+local function check_engine_mode_normal()
     local engine_mode = XPLMGetDatai(data_ref_engine_mode)
     if engine_mode == 0 then
         draw_string(text_start_x, text_start_y + text_delta_y * 1, 'SET ENGINE MODE NORMAL', 'green')
@@ -164,7 +154,7 @@ function check_engine_mode_normal()
     end
 end
 
-function check_transponder_on_and_ta_ra()
+local function check_transponder_on_and_ta_ra()
     local transponder_auto_on_off = XPLMGetDatai(data_ref_transponder_auto_on_off)
     local transponder_ta_ra = XPLMGetDatai(data_ref_transponder_ta_ra)
 
@@ -189,8 +179,6 @@ function check_pre_flight_items()
     check_beacon_on()
     -- 检查APU引气开启
     check_apu_bleed_on()
-    -- 检查油门归零
-    check_throttles_idle()
     -- 检查燃油泵开启
     check_fuel_pumps_on()
     -- 检查引擎点火器开启

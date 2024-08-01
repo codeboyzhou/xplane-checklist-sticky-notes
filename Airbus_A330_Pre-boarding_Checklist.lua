@@ -56,7 +56,7 @@ local text_start_x = 20
 local text_start_y = 20
 local text_delta_y = 20
 
-function check_parking_brake_on()
+local function check_parking_brake_on()
     local parking_brake_ratio = XPLMGetDataf(data_ref_parking_brake_ratio)
     if parking_brake_ratio == 1 then
         draw_string(text_start_x, text_start_y + text_delta_y * 27, 'SET PARKING BRAKE TO ON', 'green')
@@ -65,7 +65,7 @@ function check_parking_brake_on()
     end
 end
 
-function check_throttles_idle()
+local function check_throttles_idle()
     local throttle_ratio = XPLMGetDatavf(data_ref_throttle_ratio, 0, 2)
     if throttle_ratio[0] == 0 and throttle_ratio[1] == 0 then
         draw_string(text_start_x, text_start_y + text_delta_y * 26, 'SET THROTTLE 1 and THROTTLE 2 TO IDLE', 'green')
@@ -74,7 +74,7 @@ function check_throttles_idle()
     end
 end
 
-function check_engines_master_off()
+local function check_engines_master_off()
     local engines_master = XPLMGetDatavf(data_ref_engines_master, 0, 2)
     local engine1_master_lift = XPLMGetDataf(data_ref_engine1_master_lift)
     local engine2_master_lift = XPLMGetDataf(data_ref_engine2_master_lift)
@@ -86,7 +86,7 @@ function check_engines_master_off()
     end
 end
 
-function check_batteries_on()
+local function check_batteries_on()
     local battery_on = XPLMGetDatavi(data_ref_battery_on, 0, 3)
     if battery_on[0] == 1 and battery_on[1] == 1 and battery_on[2] == 1 then
         draw_string(text_start_x, text_start_y + text_delta_y * 24, 'SET BATTERY 1 and BATTERY 2 and APU BATTERY TO ON', 'green')
@@ -95,7 +95,7 @@ function check_batteries_on()
     end
 end
 
-function check_nav_lights_on()
+local function check_nav_lights_on()
     local nav_lights_on = XPLMGetDatai(data_ref_nav_lights)
     if nav_lights_on == 1 then
         draw_string(text_start_x, text_start_y + text_delta_y * 23, 'SET NAV LIGHTS TO ON', 'green')
@@ -104,7 +104,7 @@ function check_nav_lights_on()
     end
 end
 
-function check_emergency_lights_arm()
+local function check_emergency_lights_arm()
     local emergency_lights_arm = XPLMGetDatai(data_ref_emergency_lights)
     if emergency_lights_arm == 1 then
         draw_string(text_start_x, text_start_y + text_delta_y * 22, 'SET EMERGENCY LIGHTS TO ARM', 'green')
@@ -113,7 +113,7 @@ function check_emergency_lights_arm()
     end
 end
 
-function check_apu_master_on()
+local function check_apu_master_on()
     local apu_master_on = XPLMGetDatai(data_ref_apu_master)
     if apu_master_on == 1 then
         draw_string(text_start_x, text_start_y + text_delta_y * 21, 'SET APU MASTER TO ON', 'green')
@@ -122,7 +122,7 @@ function check_apu_master_on()
     end
 end
 
-function check_apu_start_on()
+local function check_apu_start_on()
     local apu_start_on = XPLMGetDatai(data_ref_apu_start)
     if apu_start_on == 1 then
         draw_string(text_start_x, text_start_y + text_delta_y * 20, 'SET APU START TO ON', 'green')
@@ -131,7 +131,7 @@ function check_apu_start_on()
     end
 end
 
-function check_apu_available()
+local function check_apu_available()
     local data_ref_apu_available = XPLMGetDatai(data_ref_apu_available)
     if data_ref_apu_available == 1 then
         draw_string(text_start_x, text_start_y + text_delta_y * 19, 'WAIT FOR APU AVAILABLE', 'green')
@@ -140,7 +140,7 @@ function check_apu_available()
     end
 end
 
-function check_apu_generator_on()
+local function check_apu_generator_on()
     local apu_generator_on = XPLMGetDatai(data_ref_apu_generator)
     if apu_generator_on == 1 then
         draw_string(text_start_x, text_start_y + text_delta_y * 18, 'SET APU GENERATOR TO ON', 'green')
@@ -149,7 +149,7 @@ function check_apu_generator_on()
     end
 end
 
-function check_electrical_galley_auto()
+local function check_electrical_galley_auto()
     local electrical_galley_auto = XPLMGetDatai(data_ref_electrical_galley_auto)
     if electrical_galley_auto == 1 then
         draw_string(text_start_x, text_start_y + text_delta_y * 17, 'SET ELECTRICAL GALLEY TO AUTO', 'green')
@@ -158,7 +158,7 @@ function check_electrical_galley_auto()
     end
 end
 
-function check_commercial_power_on()
+local function check_commercial_power_on()
     local commercial_power_on = XPLMGetDatai(data_ref_commercial_power)
     if commercial_power_on == 1 then
         draw_string(text_start_x, text_start_y + text_delta_y * 16, 'SET COMMERCIAL POWER TO ON', 'green')
@@ -167,7 +167,7 @@ function check_commercial_power_on()
     end
 end
 
-function check_pax_system_on()
+local function check_pax_system_on()
     local pax_system_on = XPLMGetDatai(data_ref_pax_system)
     if pax_system_on == 1 then
         draw_string(text_start_x, text_start_y + text_delta_y * 15, 'SET PAX SYSTEM TO ON', 'green')
@@ -176,7 +176,7 @@ function check_pax_system_on()
     end
 end
 
-function check_pax_satcom_on()
+local function check_pax_satcom_on()
     local pax_satcom_on = XPLMGetDatai(data_ref_pax_satcom)
     if pax_satcom_on == 1 then
         draw_string(text_start_x, text_start_y + text_delta_y * 14, 'SET PAX SATCOM TO ON', 'green')
@@ -185,7 +185,7 @@ function check_pax_satcom_on()
     end
 end
 
-function check_ifec_system_on()
+local function check_ifec_system_on()
     local ifec_system_on = XPLMGetDatai(data_ref_ifec_system)
     if ifec_system_on == 1 then
         draw_string(text_start_x, text_start_y + text_delta_y * 13, 'SET IFEC SYSTEM TO ON', 'green')
@@ -194,7 +194,7 @@ function check_ifec_system_on()
     end
 end
 
-function check_ventilation_extract_auto()
+local function check_ventilation_extract_auto()
     local ventilation_extract_auto = XPLMGetDatai(data_ref_ventilation_extract)
     if ventilation_extract_auto == 1 then
         draw_string(text_start_x, text_start_y + text_delta_y * 12, 'SET VENTILATION EXTRACT TO AUTO', 'green')
@@ -203,7 +203,7 @@ function check_ventilation_extract_auto()
     end
 end
 
-function check_cabin_fans_on()
+local function check_cabin_fans_on()
     local cabin_fans_on = XPLMGetDatai(data_ref_cabin_fans)
     if cabin_fans_on == 1 then
         draw_string(text_start_x, text_start_y + text_delta_y * 11, 'SET CABIN FANS TO ON', 'green')
@@ -212,7 +212,7 @@ function check_cabin_fans_on()
     end
 end
 
-function check_ADIRS_on()
+local function check_ADIRS_on()
     local ir1_on = XPLMGetDatai(data_ref_ir1)
     local ir2_on = XPLMGetDatai(data_ref_ir2)
     local ir3_on = XPLMGetDatai(data_ref_ir3)
@@ -230,7 +230,7 @@ function check_ADIRS_on()
     end
 end
 
-function check_flight_computer_PRIM_and_SEC_on()
+local function check_flight_computer_PRIM_and_SEC_on()
     local prim1_on = XPLMGetDatai(data_ref_prim1)
     local prim2_on = XPLMGetDatai(data_ref_prim2)
     local prim3_on = XPLMGetDatai(data_ref_prim3)
@@ -244,7 +244,7 @@ function check_flight_computer_PRIM_and_SEC_on()
     end
 end
 
-function check_TURB_DAMP_system_on()
+local function check_TURB_DAMP_system_on()
     local turb_damp_on = XPLMGetDatai(data_ref_turb_damp)
     if turb_damp_on == 1 then
         draw_string(text_start_x, text_start_y + text_delta_y * 8, 'SET TURB DAMP SYSTEM TO ON', 'green')
@@ -253,7 +253,7 @@ function check_TURB_DAMP_system_on()
     end
 end
 
-function check_hydraulic_system_on()
+local function check_hydraulic_system_on()
     local elec_hyd_green_auto = XPLMGetDatai(data_ref_elec_hyd_green)
     local elec_hyd_blur_auto = XPLMGetDatai(data_ref_elec_hyd_blue)
     local elec_hyd_yellow_auto = XPLMGetDatai(data_ref_elec_hyd_yellow)
@@ -269,7 +269,7 @@ function check_hydraulic_system_on()
     end
 end
 
-function check_gear_handle_down()
+local function check_gear_handle_down()
     local gear_handle_down = XPLMGetDatai(data_ref_gear_handle_down)
     if gear_handle_down == 1 then
         draw_string(text_start_x, text_start_y + text_delta_y * 6, 'SET GEAR HANDLE TO DOWN', 'green')
@@ -278,7 +278,7 @@ function check_gear_handle_down()
     end
 end
 
-function check_flap_handle_up()
+local function check_flap_handle_up()
     local flap_handle_up = XPLMGetDataf(data_ref_flap_handle_up)
     if flap_handle_up == 0 then
         draw_string(text_start_x, text_start_y + text_delta_y * 5, 'SET FLAP HANDLE TO UP', 'green')
@@ -287,7 +287,7 @@ function check_flap_handle_up()
     end
 end
 
-function check_spoilers_retracted()
+local function check_spoilers_retracted()
     local spoilers_retracted = XPLMGetDataf(data_ref_speedbrake_retracted)
     if spoilers_retracted == 0 then
         draw_string(text_start_x, text_start_y + text_delta_y * 4, 'SET SPOILERS HANDLE TO RETRACTED', 'green')
@@ -296,7 +296,7 @@ function check_spoilers_retracted()
     end
 end
 
-function check_crew_oxygen_on()
+local function check_crew_oxygen_on()
     local crew_oxygen_on = XPLMGetDatai(data_ref_crew_oxygen_on)
     if crew_oxygen_on == 1 then
         draw_string(text_start_x, text_start_y + text_delta_y * 3, 'SET CREW OXYGEN TO ON', 'green')
@@ -305,7 +305,7 @@ function check_crew_oxygen_on()
     end
 end
 
-function check_GPWS_system_on()
+local function check_GPWS_system_on()
     local gpws_system_on = XPLMGetDatai(data_ref_gpws_system_on)
     local gpws_gs_mode_on = XPLMGetDatai(data_ref_gpws_gs_mode_on)
     local gpws_flap_mode_on = XPLMGetDatai(data_ref_gpws_flap_mode_on)
@@ -318,7 +318,7 @@ function check_GPWS_system_on()
     end
 end
 
-function check_seatbelt_and_no_smoking_light_auto()
+local function check_seatbelt_and_no_smoking_light_auto()
     local seatbelt_light_auto = XPLMGetDatai(data_ref_seatbelt_light_auto)
     local no_smoking_light_auto = XPLMGetDatai(data_ref_no_smoking_light_auto)
 
@@ -329,7 +329,7 @@ function check_seatbelt_and_no_smoking_light_auto()
     end
 end
 
-function check_transponder_standby()
+local function check_transponder_standby()
     local transponder_auto_on_off = XPLMGetDatai(data_ref_transponder_auto_on_off)
     local transponder_ta_ra = XPLMGetDatai(data_ref_transponder_ta_ra)
 
