@@ -1,27 +1,27 @@
 local data_ref_beacon_on = XPLMFindDataRef('sim/cockpit2/switches/beacon_on')
 local data_ref_apu_bleed_on = XPLMFindDataRef('laminar/A333/buttons/apu_bleed_pos')
-local data_ref_fuel_left1_pump_on = XPLMFindDataRef("laminar/A333/fuel/buttons/left1_pump_pos")
-local data_ref_fuel_left2_pump_on = XPLMFindDataRef("laminar/A333/fuel/buttons/left2_pump_pos")
-local data_ref_fuel_left_pump_standby = XPLMFindDataRef("laminar/A333/fuel/buttons/left_stby_pump_pos")
-local data_ref_fuel_right1_pump_on = XPLMFindDataRef("laminar/A333/fuel/buttons/right1_pump_pos")
-local data_ref_fuel_right2_pump_on = XPLMFindDataRef("laminar/A333/fuel/buttons/right2_pump_pos")
-local data_ref_fuel_right_pump_standby = XPLMFindDataRef("laminar/A333/fuel/buttons/right_stby_pump_pos")
-local data_ref_fuel_center_left_pump_on = XPLMFindDataRef("laminar/A333/fuel/buttons/center_left_pump_pos")
-local data_ref_fuel_center_right_pump_on = XPLMFindDataRef("laminar/A333/fuel/buttons/center_right_pump_pos")
-local data_ref_engine_mode = XPLMFindDataRef("sim/cockpit2/engine/actuators/eng_mode_selector")
-local data_ref_engines_N3_percent = XPLMFindDataRef("sim/cockpit2/engine/indicators/N2_percent")
-local data_ref_generator1_on = XPLMFindDataRef("laminar/A333/buttons/gen1_pos")
-local data_ref_generator2_on = XPLMFindDataRef("laminar/A333/buttons/gen2_pos")
-local data_ref_bus_tie_auto = XPLMFindDataRef("laminar/A333/buttons/bus_tie_pos")
-local data_ref_engine_bleed1_on = XPLMFindDataRef("laminar/A333/buttons/eng_bleed_1_pos")
-local data_ref_engine_bleed2_on = XPLMFindDataRef("laminar/A333/buttons/eng_bleed_2_pos")
-local data_ref_engine_pack1_on = XPLMFindDataRef("laminar/A333/buttons/pack_1_pos")
-local data_ref_engine_pack2_on = XPLMFindDataRef("laminar/A333/buttons/pack_2_pos")
-local data_ref_engine_hot_air1_on = XPLMFindDataRef("laminar/A333/buttons/hot_air1_pos")
-local data_ref_engine_hot_air2_on = XPLMFindDataRef("laminar/A333/buttons/hot_air2_pos")
-local data_ref_fwd_isol_valve_on = XPLMFindDataRef("laminar/A333/buttons/cargo_cond/fwd_isol_valve_pos")
-local data_ref_bulk_isol_valve_on = XPLMFindDataRef("laminar/A333/buttons/cargo_cond/bulk_isol_valve_pos")
-local data_ref_hot_air_on = XPLMFindDataRef("laminar/A333/buttons/cargo_cond/hot_air_pos")
+local data_ref_fuel_left1_pump_on = XPLMFindDataRef('laminar/A333/fuel/buttons/left1_pump_pos')
+local data_ref_fuel_left2_pump_on = XPLMFindDataRef('laminar/A333/fuel/buttons/left2_pump_pos')
+local data_ref_fuel_left_pump_standby = XPLMFindDataRef('laminar/A333/fuel/buttons/left_stby_pump_pos')
+local data_ref_fuel_right1_pump_on = XPLMFindDataRef('laminar/A333/fuel/buttons/right1_pump_pos')
+local data_ref_fuel_right2_pump_on = XPLMFindDataRef('laminar/A333/fuel/buttons/right2_pump_pos')
+local data_ref_fuel_right_pump_standby = XPLMFindDataRef('laminar/A333/fuel/buttons/right_stby_pump_pos')
+local data_ref_fuel_center_left_pump_on = XPLMFindDataRef('laminar/A333/fuel/buttons/center_left_pump_pos')
+local data_ref_fuel_center_right_pump_on = XPLMFindDataRef('laminar/A333/fuel/buttons/center_right_pump_pos')
+local data_ref_engine_mode = XPLMFindDataRef('sim/cockpit2/engine/actuators/eng_mode_selector')
+local data_ref_engines_N3_percent = XPLMFindDataRef('sim/cockpit2/engine/indicators/N2_percent')
+local data_ref_generator1_on = XPLMFindDataRef('laminar/A333/buttons/gen1_pos')
+local data_ref_generator2_on = XPLMFindDataRef('laminar/A333/buttons/gen2_pos')
+local data_ref_bus_tie_auto = XPLMFindDataRef('laminar/A333/buttons/bus_tie_pos')
+local data_ref_engine_bleed1_on = XPLMFindDataRef('laminar/A333/buttons/eng_bleed_1_pos')
+local data_ref_engine_bleed2_on = XPLMFindDataRef('laminar/A333/buttons/eng_bleed_2_pos')
+local data_ref_engine_pack1_on = XPLMFindDataRef('laminar/A333/buttons/pack_1_pos')
+local data_ref_engine_pack2_on = XPLMFindDataRef('laminar/A333/buttons/pack_2_pos')
+local data_ref_engine_hot_air1_on = XPLMFindDataRef('laminar/A333/buttons/hot_air1_pos')
+local data_ref_engine_hot_air2_on = XPLMFindDataRef('laminar/A333/buttons/hot_air2_pos')
+local data_ref_fwd_isol_valve_on = XPLMFindDataRef('laminar/A333/buttons/cargo_cond/fwd_isol_valve_pos')
+local data_ref_bulk_isol_valve_on = XPLMFindDataRef('laminar/A333/buttons/cargo_cond/bulk_isol_valve_pos')
+local data_ref_hot_air_on = XPLMFindDataRef('laminar/A333/buttons/cargo_cond/hot_air_pos')
 local data_ref_apu_master_on = XPLMFindDataRef('laminar/A333/buttons/APU_master')
 local data_ref_apu_start_on = XPLMFindDataRef('sim/cockpit2/electrical/APU_starter_switch')
 local data_ref_apu_generator_on = XPLMFindDataRef('sim/cockpit2/electrical/APU_generator_on')
@@ -32,57 +32,119 @@ local text_start_x = 20
 local text_start_y = 20
 local text_delta_y = 20
 
+local check_passed_items = {}
+local total_item_count_to_be_checked = 12
+
+local function all_item_check_passed()
+    local check_passed_item_count = 0
+    for _, value in pairs(check_passed_items) do
+        if value then
+            check_passed_item_count = check_passed_item_count + 1
+        else
+            return false
+        end
+    end
+    return check_passed_item_count == total_item_count_to_be_checked
+end
+
 local function check_beacon_on()
     local beacon_on = XPLMGetDatai(data_ref_beacon_on)
-    if beacon_on == 1 then
-        draw_string(text_start_x, text_start_y + text_delta_y * 11, 'SET BEACON TO ON', 'green')
+    local text_content = 'SET BEACON TO ON'
+    local text_color = nil
+
+    if all_item_check_passed() then
+        text_content = ''
+    elseif beacon_on == 1 then
+        text_color = 'green'
+        check_passed_items[11] = true
     else
-        draw_string(text_start_x, text_start_y + text_delta_y * 11, 'SET BEACON TO ON', 'red')
+        text_color = 'red'
+        check_passed_items[11] = false
     end
+
+    draw_string(text_start_x, text_start_y + text_delta_y * 11, text_content, text_color)
 end
 
 local function check_apu_bleed_on()
     local apu_bleed_on = XPLMGetDatai(data_ref_apu_bleed_on)
-    if apu_bleed_on == 1 then
-        draw_string(text_start_x, text_start_y + text_delta_y * 10, 'SET APU BLEED TO ON', 'green')
+    local text_content = 'SET APU BLEED TO ON'
+    local text_color = nil
+
+    if all_item_check_passed() then
+        text_content = ''
+    elseif apu_bleed_on == 1 then
+        text_color = 'green'
+        check_passed_items[10] = true
     else
-        draw_string(text_start_x, text_start_y + text_delta_y * 10, 'SET APU BLEED TO ON', 'red')
+        text_color = 'red'
+        check_passed_items[10] = false
     end
+
+    draw_string(text_start_x, text_start_y + text_delta_y * 10, text_content, text_color)
 end
 
 local function check_fuel_pumps_on()
     local fuel_left1_pump_on = XPLMGetDatai(data_ref_fuel_left1_pump_on)
     local fuel_left2_pump_on = XPLMGetDatai(data_ref_fuel_left2_pump_on)
     local fuel_left_pump_standby = XPLMGetDatai(data_ref_fuel_left_pump_standby)
+
     local fuel_right1_pump_on = XPLMGetDatai(data_ref_fuel_right1_pump_on)
     local fuel_right2_pump_on = XPLMGetDatai(data_ref_fuel_right2_pump_on)
     local fuel_right_pump_standby = XPLMGetDatai(data_ref_fuel_right_pump_standby)
+
     local fuel_center_left_pump_on = XPLMGetDatai(data_ref_fuel_center_left_pump_on)
     local fuel_center_right_pump_on = XPLMGetDatai(data_ref_fuel_center_right_pump_on)
 
-    if fuel_left1_pump_on == 1 and fuel_left2_pump_on == 1 and fuel_left_pump_standby == 1 and fuel_right1_pump_on == 1 and fuel_right2_pump_on == 1 and fuel_center_left_pump_on == 1 and fuel_center_right_pump_on == 1 then
-        draw_string(text_start_x, text_start_y + text_delta_y * 9, 'SET ALL FUEL PUMPS ON', 'green')
+    local text_content = 'SET ALL FUEL PUMPS ON'
+    local text_color = nil
+
+    if all_item_check_passed() then
+        text_content = ''
+    elseif fuel_left1_pump_on == 1 and fuel_left2_pump_on == 1 and fuel_left_pump_standby == 1 and fuel_right1_pump_on == 1 and fuel_right2_pump_on == 1 and fuel_center_left_pump_on == 1 and fuel_center_right_pump_on == 1 then
+        text_color = 'green'
+        check_passed_items[9] = true
     else
-        draw_string(text_start_x, text_start_y + text_delta_y * 9, 'SET ALL FUEL PUMPS ON', 'red')
+        text_color = 'red'
+        check_passed_items[9] = false
     end
+
+    draw_string(text_start_x, text_start_y + text_delta_y * 9, text_content, text_color)
 end
 
 local function check_engine_mode_IGN_START()
     local engine_mode = XPLMGetDatai(data_ref_engine_mode)
-    if engine_mode == 1 then
-        draw_string(text_start_x, text_start_y + text_delta_y * 8, 'SET ENGINE MODE TO IGN/START', 'green')
+    local text_content = 'SET ENGINE MODE TO IGN/START'
+    local text_color = nil
+
+    if all_item_check_passed() then
+        text_content = ''
+    elseif engine_mode == 1 then
+        text_color = 'green'
+        check_passed_items[8] = true
     else
-        draw_string(text_start_x, text_start_y + text_delta_y * 8, 'SET ENGINE MODE TO IGN/START', 'red')
+        text_color = 'red'
+        check_passed_items[8] = false
     end
+
+    draw_string(text_start_x, text_start_y + text_delta_y * 8, text_content, text_color)
 end
 
 local function check_engines_starting()
     local engines_N3_percent = XPLMGetDatavf(data_ref_engines_N3_percent, 0, 2)
-    if engines_N3_percent[0] > 58 and engines_N3_percent[1] > 58 then
-        draw_string(text_start_x, text_start_y + text_delta_y * 7, 'SET ENGINE 1 and ENGINE 2 MASTER STARTING', 'green')
+    local text_content = 'SET ENGINE 1 and ENGINE 2 MASTER STARTING'
+    local text_color = nil
+
+    if all_item_check_passed() then
+        text_content = ''
+    elseif engines_N3_percent[0] > 58 and engines_N3_percent[1] > 58 then
+        text_color = 'green'
+        check_passed_items[7] = true
     else
-        draw_string(text_start_x, text_start_y + text_delta_y * 7, 'SET ENGINE 1 and ENGINE 2 MASTER STARTING', 'red')
+        text_color = 'red'
+        check_passed_items[7] = false
     end
+
+    draw_string(text_start_x, text_start_y + text_delta_y * 7, text_content, text_color)
 end
 
 local function check_generators_on_and_bus_tie_auto()
@@ -90,35 +152,64 @@ local function check_generators_on_and_bus_tie_auto()
     local generator2_on = XPLMGetDatai(data_ref_generator2_on)
     local bus_tie_auto = XPLMGetDatai(data_ref_bus_tie_auto)
 
-    if generator1_on == 1 and generator2_on == 1 and bus_tie_auto == 1 then
-        draw_string(text_start_x, text_start_y + text_delta_y * 6, 'SET ENGINE 1 and ENGINE 2 GENERATOR ON and BUS TIE AUTO', 'green')
+    local text_content = 'SET ENGINE 1 and ENGINE 2 GENERATOR ON and BUS TIE AUTO'
+    local text_color = nil
+
+    if all_item_check_passed() then
+        text_content = ''
+    elseif generator1_on == 1 and generator2_on == 1 and bus_tie_auto == 1 then
+        text_color = 'green'
+        check_passed_items[6] = true
     else
-        draw_string(text_start_x, text_start_y + text_delta_y * 6, 'SET ENGINE 1 and ENGINE 2 GENERATOR ON and BUS TIE AUTO', 'red')
+        text_color = 'red'
+        check_passed_items[6] = false
     end
+
+    draw_string(text_start_x, text_start_y + text_delta_y * 6, text_content, text_color)
 end
 
 local function check_apu_bleed_off()
     local apu_bleed_on = XPLMGetDatai(data_ref_apu_bleed_on)
-    if apu_bleed_on == 0 then
-        draw_string(text_start_x, text_start_y + text_delta_y * 5, 'SET APU BLEED TO OFF', 'green')
+    local text_content = 'SET APU BLEED TO OFF'
+    local text_color = nil
+
+    if all_item_check_passed() then
+        text_content = ''
+    elseif apu_bleed_on == 0 then
+        text_color = 'green'
+        check_passed_items[5] = true
     else
-        draw_string(text_start_x, text_start_y + text_delta_y * 5, 'SET APU BLEED TO OFF', 'red')
+        text_color = 'red'
+        check_passed_items[5] = false
     end
+
+    draw_string(text_start_x, text_start_y + text_delta_y * 5, text_content, text_color)
 end
 
 local function check_engines_bleed_on()
     local engine_bleed1_on = XPLMGetDatai(data_ref_engine_bleed1_on)
     local engine_bleed2_on = XPLMGetDatai(data_ref_engine_bleed2_on)
+
     local engine_pack1_on = XPLMGetDatai(data_ref_engine_pack1_on)
     local engine_pack2_on = XPLMGetDatai(data_ref_engine_pack2_on)
+
     local engine_hot_air1_on = XPLMGetDatai(data_ref_engine_hot_air1_on)
     local engine_hot_air2_on = XPLMGetDatai(data_ref_engine_hot_air2_on)
 
-    if engine_bleed1_on == 1 and engine_bleed2_on == 1 and engine_pack1_on == 1 and engine_pack2_on == 1 and engine_hot_air1_on == 1 and engine_hot_air2_on == 1 then
-        draw_string(text_start_x, text_start_y + text_delta_y * 4, 'SET ENGINES BLEED and PACK 1/2 and HOT AIR 1/2 ON', 'green')
+    local text_content = 'SET ENGINES BLEED and PACK 1/2 and HOT AIR 1/2 ON'
+    local text_color = nil
+
+    if all_item_check_passed() then
+        text_content = ''
+    elseif engine_bleed1_on == 1 and engine_bleed2_on == 1 and engine_pack1_on == 1 and engine_pack2_on == 1 and engine_hot_air1_on == 1 and engine_hot_air2_on == 1 then
+        text_color = 'green'
+        check_passed_items[4] = true
     else
-        draw_string(text_start_x, text_start_y + text_delta_y * 4, 'SET ENGINES BLEED and PACK 1/2 and HOT AIR 1/2 ON', 'red')
+        text_color = 'red'
+        check_passed_items[4] = false
     end
+
+    draw_string(text_start_x, text_start_y + text_delta_y * 4, text_content, text_color)
 end
 
 local function check_cargo_valves_isolated_and_hot_air_on()
@@ -126,11 +217,20 @@ local function check_cargo_valves_isolated_and_hot_air_on()
     local bulk_isol_valve_on = XPLMGetDatai(data_ref_bulk_isol_valve_on)
     local hot_air_on = XPLMGetDatai(data_ref_hot_air_on)
 
-    if fwd_isol_valve_on == 1 and bulk_isol_valve_on == 1 and hot_air_on == 1 then
-        draw_string(text_start_x, text_start_y + text_delta_y * 3, 'SET CARGO ISOL VALVES and HOT AIR ON', 'green')
+    local text_content = 'SET CARGO ISOL VALVES and HOT AIR ON'
+    local text_color = nil
+
+    if all_item_check_passed() then
+        text_content = ''
+    elseif fwd_isol_valve_on == 1 and bulk_isol_valve_on == 1 and hot_air_on == 1 then
+        text_color = 'green'
+        check_passed_items[3] = true
     else
-        draw_string(text_start_x, text_start_y + text_delta_y * 3, 'SET CARGO ISOL VALVES and HOT AIR ON', 'red')
+        text_color = 'red'
+        check_passed_items[3] = false
     end
+
+    draw_string(text_start_x, text_start_y + text_delta_y * 3, text_content, text_color)
 end
 
 local function check_apu_generator_and_master_off()
@@ -138,31 +238,58 @@ local function check_apu_generator_and_master_off()
     local apu_start_on = XPLMGetDatai(data_ref_apu_start_on)
     local apu_generator_on = XPLMGetDatai(data_ref_apu_generator_on)
 
-    if apu_master_on == 0 and apu_start_on == 0 and apu_generator_on == 0 then
-        draw_string(text_start_x, text_start_y + text_delta_y * 2, 'SET APU MASTER and APU START and APU GENERATOR OFF', 'green')
+    local text_content = 'SET APU MASTER and APU START and APU GENERATOR OFF'
+    local text_color = nil
+
+    if all_item_check_passed() then
+        text_content = ''
+    elseif apu_master_on == 0 and apu_start_on == 0 and apu_generator_on == 0 then
+        text_color = 'green'
+        check_passed_items[2] = true
     else
-        draw_string(text_start_x, text_start_y + text_delta_y * 2, 'SET APU MASTER and APU START and APU GENERATOR OFF', 'red')
+        text_color = 'red'
+        check_passed_items[2] = false
     end
+
+    draw_string(text_start_x, text_start_y + text_delta_y * 2, text_content, text_color)
 end
 
 local function check_engine_mode_normal()
     local engine_mode = XPLMGetDatai(data_ref_engine_mode)
-    if engine_mode == 0 then
-        draw_string(text_start_x, text_start_y + text_delta_y * 1, 'SET ENGINE MODE NORMAL', 'green')
+    local text_content = 'SET ENGINE MODE TO NORMAL'
+    local text_color = nil
+
+    if all_item_check_passed() then
+        text_content = ''
+    elseif engine_mode == 0 then
+        text_color = 'green'
+        check_passed_items[1] = true
     else
-        draw_string(text_start_x, text_start_y + text_delta_y * 1, 'SET ENGINE MODE NORMAL', 'red')
+        text_color = 'red'
+        check_passed_items[1] = false
     end
+
+    draw_string(text_start_x, text_start_y + text_delta_y * 1, text_content, text_color)
 end
 
 local function check_transponder_on_and_ta_ra()
     local transponder_auto_on_off = XPLMGetDatai(data_ref_transponder_auto_on_off)
     local transponder_ta_ra = XPLMGetDatai(data_ref_transponder_ta_ra)
 
-    if transponder_auto_on_off == 1 and transponder_ta_ra == 2 then
-        draw_string(text_start_x, text_start_y + text_delta_y * 0, 'SET TRANSPONDER ON AND TA/RA', 'green')
+    local text_content = 'SET TRANSPONDER ON AND TA/RA'
+    local text_color = nil
+
+    if all_item_check_passed() then
+        text_content = ''
+    elseif transponder_auto_on_off == 1 and transponder_ta_ra == 2 then
+        text_color = 'green'
+        check_passed_items[0] = true
     else
-        draw_string(text_start_x, text_start_y + text_delta_y * 0, 'SET TRANSPONDER ON AND TA/RA', 'red')
+        text_color = 'red'
+        check_passed_items[0] = false
     end
+
+    draw_string(text_start_x, text_start_y + text_delta_y * 0, text_content, text_color)
 end
 
 -- 此函数用于实现空客A330系列客机起飞前驾驶舱检查清单
@@ -201,9 +328,28 @@ function check_pre_flight_items()
     check_transponder_on_and_ta_ra()
 end
 
-function pre_flight_checklist()
-    XPLMSpeakString("Pre-flight Checklist")
+local show_pre_flight_checklist = false
+
+function pre_flight_checklist_toggle()
+    show_pre_flight_checklist = not show_pre_flight_checklist
+
+    if show_pre_flight_checklist then
+        XPLMSpeakString('Pre-flight Checklist Started')
+        for i = 0, total_item_count_to_be_checked, 1 do
+            check_passed_items[i] = false
+        end
+    else
+        XPLMSpeakString('Pre-flight Checklist Cancelled')
+        for i = 0, total_item_count_to_be_checked, 1 do
+            check_passed_items[i] = true
+        end
+    end
+
     do_every_draw('check_pre_flight_items()')
+
+    if all_item_check_passed() then
+        XPLMSpeakString('Pre-flight Checklist Finished')
+    end
 end
 
-add_macro('Show Airbus A330 Pre-flight Checklist', 'pre_flight_checklist()', '', 'deactivate')
+create_command('FlyWithLua/Airbus_A330_Checklist/Pre-flight', 'Show Airbus A330 Pre-flight Checklist', 'pre_flight_checklist_toggle()', '', '')
