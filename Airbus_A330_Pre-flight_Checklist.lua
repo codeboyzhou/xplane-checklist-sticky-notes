@@ -42,11 +42,15 @@ local transponder_ta_ra_knob = XPLMFindDataRef('laminar/A333/transponder/ta_ra_k
 local checklist = {{
     name = 'BEACON',
     value = 'ON',
-    completed = XPLMGetDatai(beacon_on_switch) == 1
+    completed = function()
+        return XPLMGetDatai(beacon_on_switch) == 1
+    end
 }, {
     name = 'APU BLEED',
     value = 'ON',
-    completed = XPLMGetDatai(apu_bleed_switch) == 1
+    completed = function()
+        return XPLMGetDatai(apu_bleed_switch) == 1
+    end
 }, {
     name = 'ALL FUEL PUMPS',
     value = 'ON',
@@ -70,15 +74,21 @@ local checklist = {{
 }, {
     name = 'ENGINE MODE',
     value = 'IGN/START',
-    completed = XPLMGetDatai(engine_mode) == 1
+    completed = function()
+        return XPLMGetDatai(engine_mode) == 1
+    end
 }, {
     name = 'ENGINE 1 MASTER',
     value = 'ON & N3 > 60%',
-    completed = XPLMGetDatavf(engine_N3_percent, 0, 2)[0] > 60
+    completed = function()
+        return XPLMGetDatavf(engine_N3_percent, 0, 2)[0] > 60
+    end
 }, {
     name = 'ENGINE 2 MASTER',
     value = 'ON & N3 > 60%',
-    completed = XPLMGetDatavf(engine_N3_percent, 0, 2)[1] > 60
+    completed = function()
+        return XPLMGetDatavf(engine_N3_percent, 0, 2)[1] > 60
+    end
 }, {
     name = 'GENERATOR 1 & GENERATOR 2',
     value = 'ON',
@@ -90,11 +100,15 @@ local checklist = {{
 }, {
     name = 'BUS TIE',
     value = 'AUTO',
-    completed = XPLMGetDatai(bus_tie_switch) == 1
+    completed = function()
+        return XPLMGetDatai(bus_tie_switch) == 1
+    end
 }, {
     name = 'APU BLEED',
     value = 'OFF',
-    completed = XPLMGetDatai(apu_bleed_switch) == 0
+    completed = function()
+        return XPLMGetDatai(apu_bleed_switch) == 0
+    end
 }, {
     name = 'ENGINES BLEED & PACK 1/2 & HOT AIR 1/2',
     value = 'ON',
@@ -134,7 +148,9 @@ local checklist = {{
 }, {
     name = 'ENGINE MODE',
     value = 'NORMAL',
-    completed = XPLMGetDatai(engine_mode) == 0
+    completed = function()
+        return XPLMGetDatai(engine_mode) == 0
+    end
 }, {
     name = 'TRANSPONDER',
     value = 'ON AND TA/RA',
@@ -159,11 +175,11 @@ function check_pre_flight_item()
 
     for index, item in ipairs(checklist) do
         local text_content = string.format('SET %s TO %s', item.name, item.value)
-        local text_color = item.completed and 'green' or 'red'
+        local text_color = item.completed() and 'green' or 'red'
 
         draw_string(text_start_x, text_start_y + text_delta_y * index, text_content, text_color)
 
-        if not item.completed then
+        if not item.completed() then
             all_completed = false
         end
     end

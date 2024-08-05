@@ -71,7 +71,9 @@ local transponder_ta_ra_knob = XPLMFindDataRef('laminar/A333/transponder/ta_ra_k
 local checklist = {{
     name = 'PARKING BRAKE',
     value = 'ON',
-    completed = XPLMGetDataf(parking_brake_ratio) == 1
+    completed = function()
+        return XPLMGetDataf(parking_brake_ratio) == 1
+    end
 }, {
     name = 'THROTTLE 1 & THROTTLE 2',
     value = 'IDLE',
@@ -98,55 +100,81 @@ local checklist = {{
 }, {
     name = 'NAV LIGHTS',
     value = 'ON',
-    completed = XPLMGetDatai(nav_light_switch) == 1
+    completed = function()
+        return XPLMGetDatai(nav_light_switch) == 1
+    end
 }, {
     name = 'EMERGENCY LIGHTS',
     value = 'ARM',
-    completed = XPLMGetDatai(emergency_exit_light_switch) == 1
+    completed = function()
+        return XPLMGetDatai(emergency_exit_light_switch) == 1
+    end
 }, {
     name = 'APU MASTER',
     value = 'ON',
-    completed = XPLMGetDatai(apu_master_switch) == 1
+    completed = function()
+        return XPLMGetDatai(apu_master_switch) == 1
+    end
 }, {
     name = 'APU START',
     value = 'ON',
-    completed = XPLMGetDatai(apu_starter_switch) == 1
+    completed = function()
+        return XPLMGetDatai(apu_starter_switch) == 1
+    end
 }, {
     name = 'WAIT FOR APU AVAILABLE',
     value = '',
-    completed = XPLMGetDatai(apu_available) == 1
+    completed = function()
+        return XPLMGetDatai(apu_available) == 1
+    end
 }, {
     name = 'APU GENERATOR',
     value = 'ON',
-    completed = XPLMGetDatai(apu_generator_on) == 1
+    completed = function()
+        return XPLMGetDatai(apu_generator_on) == 1
+    end
 }, {
     name = 'ELECTRICAL GALLEY',
     value = 'AUTO',
-    completed = XPLMGetDatai(electrical_galley_switch) == 1
+    completed = function()
+        return XPLMGetDatai(electrical_galley_switch) == 1
+    end
 }, {
     name = 'COMMERCIAL POWER',
     value = 'ON',
-    completed = XPLMGetDatai(electrical_commercial_power_switch) == 1
+    completed = function()
+        return XPLMGetDatai(electrical_commercial_power_switch) == 1
+    end
 }, {
     name = 'PAX SYSTEM',
     value = 'ON',
-    completed = XPLMGetDatai(pax_system_switch) == 1
+    completed = function()
+        return XPLMGetDatai(pax_system_switch) == 1
+    end
 }, {
     name = 'PAX SATCOM',
     value = 'ON',
-    completed = XPLMGetDatai(pax_satcom_switch) == 1
+    completed = function()
+        return XPLMGetDatai(pax_satcom_switch) == 1
+    end
 }, {
     name = 'IFEC SYSTEM',
     value = 'ON',
-    completed = XPLMGetDatai(pax_ifec_system_switch) == 1
+    completed = function()
+        return XPLMGetDatai(pax_ifec_system_switch) == 1
+    end
 }, {
     name = 'VENTILATION EXTRACT',
     value = 'AUTO',
-    completed = XPLMGetDatai(ventilation_extract_switch) == 1
+    completed = function()
+        return XPLMGetDatai(ventilation_extract_switch) == 1
+    end
 }, {
     name = 'CABIN FANS',
     value = 'ON',
-    completed = XPLMGetDatai(cabin_fans_switch) == 1
+    completed = function()
+        return XPLMGetDatai(cabin_fans_switch) == 1
+    end
 }, {
     name = 'ADIRS SYSTEM',
     value = 'ON & NAV',
@@ -171,7 +199,9 @@ local checklist = {{
 }, {
     name = 'TURB DAMP SYSTEM',
     value = 'ON',
-    completed = XPLMGetDatai(fcc_turb_damp_switch) == 1
+    completed = function()
+        return XPLMGetDatai(fcc_turb_damp_switch) == 1
+    end
 }, {
     name = 'FLIGHT COMPUTER PRIM & SEC',
     value = 'ON',
@@ -209,19 +239,27 @@ local checklist = {{
 }, {
     name = 'GEAR HANDLE',
     value = 'DOWN',
-    completed = XPLMGetDatai(gear_handle_down) == 1
+    completed = function()
+        return XPLMGetDatai(gear_handle_down) == 1
+    end
 }, {
     name = 'FLAP HANDLE',
     value = 'UP',
-    completed = XPLMGetDataf(flap_handle_ratio) == 0
+    completed = function()
+        return XPLMGetDataf(flap_handle_ratio) == 0
+    end
 }, {
     name = 'SPOILER (SPEED BRAKE) HANDLE',
     value = 'RETRACTED',
-    completed = XPLMGetDatai(speedbrake_ratio) == 0
+    completed = function()
+        return XPLMGetDatai(speedbrake_ratio) == 0
+    end
 }, {
     name = 'CREW OXYGEN',
     value = 'ON',
-    completed = XPLMGetDatai(crew_oxygen_switch) == 1
+    completed = function()
+        return XPLMGetDatai(crew_oxygen_switch) == 1
+    end
 }, {
     name = 'GPWS SYSTEM & MODES',
     value = 'ON',
@@ -235,11 +273,15 @@ local checklist = {{
 }, {
     name = 'SEATBELT & NO SMOKING LIGHTS',
     value = 'AUTO',
-    completed = XPLMGetDatai(seatbelt_light_switch) == 1 and XPLMGetDatai(no_smoking_light_switch) == 1
+    completed = function()
+        return XPLMGetDatai(seatbelt_light_switch) == 1 and XPLMGetDatai(no_smoking_light_switch) == 1
+    end
 }, {
     name = 'TRANSPONDER & TA/RA',
     value = 'STANDBY',
-    completed = XPLMGetDatai(transponder_auto_on_off_knob) == -1 and XPLMGetDatai(transponder_ta_ra_knob) == 0
+    completed = function()
+        return XPLMGetDatai(transponder_auto_on_off_knob) == -1 and XPLMGetDatai(transponder_ta_ra_knob) == 0
+    end
 }}
 
 ------------------------------------------------- command -----------------------------------------
@@ -256,11 +298,11 @@ function check_pre_boarding_item()
 
     for index, item in ipairs(checklist) do
         local text_content = string.format('SET %s TO %s', item.name, item.value)
-        local text_color = item.completed and 'green' or 'red'
+        local text_color = item.completed() and 'green' or 'red'
 
         draw_string(text_start_x, text_start_y + text_delta_y * index, text_content, text_color)
 
-        if not item.completed then
+        if not item.completed() then
             all_completed = false
         end
     end
