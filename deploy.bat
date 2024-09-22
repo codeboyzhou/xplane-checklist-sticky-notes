@@ -11,6 +11,7 @@ for /f "tokens=2*" %%i in ('%reg% query "HKLM\SOFTWARE\Microsoft\Windows\Current
 set "scripts_directory=%xplane12_install_location%\Resources\plugins\FlyWithLua\Scripts\"
 set "source_files=*.lua"
 
+del "%scripts_directory%%source_files%"
 copy "%source_files%" "%scripts_directory%"
 
 for /r "%scripts_directory%" %%f in (*.lua) do (
